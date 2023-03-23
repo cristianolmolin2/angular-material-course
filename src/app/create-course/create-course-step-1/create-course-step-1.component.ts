@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-course-step-1',
@@ -6,5 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-course-step-1.component.scss']
 })
 export class CreateCourseStep1Component {
+
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.buildForm();
+  }
+
+  private buildForm() {
+    return this.fb.group({
+      title: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(60)])],
+      releasedAt: [new Date(), Validators.required],
+      category: ['BEGINNER', Validators.required],
+      courseType: ['premium', Validators.required],
+      downloadsAllowed: [false, Validators.requiredTrue],
+      longDescription: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+    })
+  }
+
+  get titleControl() {
+    return this.form.controls['title'];
+  }
 
 }

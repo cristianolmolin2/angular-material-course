@@ -1,1 +1,51 @@
-<p>create-course-step1 works!</p>
+<div [formGroup]="form" class="course-details-form">
+  <mat-form-field>
+    <mat-label>Course title</mat-label>
+    <input matInput placeholder="Course title" formControlName="title" #title>
+    <mat-hint align="end">
+      {{title.value.length}} / 60
+    </mat-hint>
+
+    <mat-error *ngIf="titleControl.errors?.['minlength']">
+      A minimum length of 5 characters is required
+    </mat-error>
+
+    <mat-error *ngIf="titleControl.errors?.['required']">
+      Course title is required
+    </mat-error>
+    <!--<span matPrefix>+32</span>
+    <span matSuffix>.00</span>-->
+  </mat-form-field>
+
+  <mat-radio-group class="course-type" formControlName="courseType">
+    <mat-radio-button value="free">
+      Free
+    </mat-radio-button>
+
+    <mat-radio-button value="premium">
+      Premium
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <!--Multiple select example
+      <mat-select formControlName="category" placeholder="Select category" multiple>
+    -->
+
+    <mat-select formControlName="category" placeholder="Select category">
+      <mat-option>None</mat-option>
+
+      <!--Example of select group
+        <mat-optgroup label="Begginers">
+          <mat-option value="newprogramming">New to Programming</mat-option>
+          <mat-option value="newjavascript">New to Javascript</mat-option>
+          <mat-option value="newangular">New to Angular</mat-option>
+        </mat-optgroup>
+      -->
+      <mat-option value="BEGINNER">Beginner</mat-option>
+      <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+      <mat-option value="ADVANCED">Advanced</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
