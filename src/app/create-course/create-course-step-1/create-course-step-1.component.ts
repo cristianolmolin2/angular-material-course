@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-create-course-step-1',
@@ -22,7 +23,16 @@ export class CreateCourseStep1Component {
       courseType: ['premium', Validators.required],
       downloadsAllowed: [false, Validators.requiredTrue],
       longDescription: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-    })
+    });
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    const date = cellDate.getDate();
+    if (view === 'month') {
+      return (date === 1) ? 'highlight-date' : "";
+    }
+
+    return "";
   }
 
   get titleControl() {

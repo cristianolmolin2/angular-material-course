@@ -48,4 +48,13 @@
       <mat-option value="ADVANCED">Advanced</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Release date</mat-label>
+    <input matInput formControlName="releasedAt" placeholder="Release date" [matDatepicker]="releasedAtPicker">
+
+    <mat-datepicker-toggle matSuffix [for]="releasedAtPicker"></mat-datepicker-toggle>
+
+    <mat-datepicker #releasedAtPicker [dateClass]="dateClass"></mat-datepicker>
+  </mat-form-field>
 </div>
