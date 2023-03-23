@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,8 @@ import { CourseComponent } from './course/course.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
+import { CreateCourseStep1Component } from './create-course/create-course-step-1/create-course-step-1.component';
+import { CreateCourseStep2Component } from './create-course/create-course-step-2/create-course-step-2.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { CoursesCardListComponent } from './courses-card-list/courses-card-list.
     AboutComponent,
     CourseComponent,
     CreateCourseComponent,
-    CoursesCardListComponent
+    CoursesCardListComponent,
+    CreateCourseStep1Component,
+    CreateCourseStep2Component,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { CoursesCardListComponent } from './courses-card-list/courses-card-list.
     MatMenuModule,
     MatButtonModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
