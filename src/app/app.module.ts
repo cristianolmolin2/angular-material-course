@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -17,6 +18,7 @@ import { AboutComponent } from './about/about.component';
 import { CourseComponent } from './course/course.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AboutComponent,
     CourseComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    CoursesCardListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatMenuModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

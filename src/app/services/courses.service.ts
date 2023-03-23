@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 import { Course } from '../model/course';
 import { Lesson } from '../model/lesson';
 
@@ -13,16 +14,16 @@ export class CoursesService {
   constructor(private http: HttpClient) { }
 
   findCourseById(courseId: number): Observable<Course> {
-    return this.http.get<Course>(`/api/courses/${courseId}`);
+    return this.http.get<Course>(`${environment.apiUrl}/api/courses/${courseId}`);
   }
 
   findAllCourses(): Observable<Course[]> {
-    return this.http.get<any>(`/api/courses`)
+    return this.http.get<any>(`${environment.apiUrl}/api/courses`)
       .pipe(map(res => res['payload']))
   }
 
   findAllCourseLessons(courseId: number): Observable<Lesson[]> {
-    return this.http.get<any>(`/api/lessons`, {
+    return this.http.get<any>(`${environment.apiUrl}/api/lessons`, {
       params: new HttpParams()
         .set('courseId', courseId.toString())
         .set('pageNumber', "0")
@@ -34,7 +35,7 @@ export class CoursesService {
 
   findLessons(courseId: number, sortOrder = 'asc',
     pageNumber = 0, pageSize = 3, sortColumn = 'seqNo'): Observable<Lesson[]> {
-    return this.http.get<any>('/api/lessons', {
+    return this.http.get<any>(`${environment.apiUrl}/api/lessons`, {
       params: new HttpParams()
         .set('courseId', courseId.toString())
         .set('sortOrder', sortOrder)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
@@ -11,8 +11,8 @@ import { CoursesService } from '../services/courses.service';
 })
 export class HomeComponent implements OnInit {
 
-  beginnerCourses$: Observable<Course[]> | undefined;
-  advancedCourses$: Observable<Course[]> | undefined;
+  beginnerCourses$: Observable<Course[]> = new BehaviorSubject<Course[]>([]);
+  advancedCourses$: Observable<Course[]> = new BehaviorSubject<Course[]>([]);
 
   constructor(private service: CoursesService) {
 
