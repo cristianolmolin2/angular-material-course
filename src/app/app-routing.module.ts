@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { inject, NgModule } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { CourseComponent } from './course/course.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { HomeComponent } from './home/home.component';
+import { CoursesService } from './services/courses.service';
 
 const routes: Routes = [
   {
@@ -16,7 +17,10 @@ const routes: Routes = [
   },
   {
     path: "courses/:id",
-    component: CourseComponent
+    component: CourseComponent,
+    resolve: {
+      course: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(CoursesService).findCourseById(route.params['id'])
+    }
   },
   {
     path: "add-new-course",
