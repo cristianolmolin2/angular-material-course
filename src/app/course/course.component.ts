@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +24,8 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
   expandedLesson: Lesson | null = null;
 
+  selection = new SelectionModel<Lesson>(true, []);
+
   @ViewChild(MatPaginator)
   paginator: any = MatPaginator;
 
@@ -30,6 +33,7 @@ export class CourseComponent implements OnInit, AfterViewInit {
   sort: any = MatSort;
 
   displayedColumns: string[] = [
+    "select",
     "seqNo",
     "description",
     "duration"
@@ -75,6 +79,22 @@ export class CourseComponent implements OnInit, AfterViewInit {
       this.expandedLesson = null;
     } else {
       this.expandedLesson = lesson;
+    }
+  }
+
+  onLessonToggled(lesson: Lesson) {
+    this.selection.toggle(lesson);
+  }
+
+  isAllSelected() {
+    return this.selection.selected.length === this.lessons.length;
+  }
+
+  toggleAll() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+    } else {
+      this.selection.select(...this.lessons)
     }
   }
 
