@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCommonModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,6 +37,7 @@ import { CreateCourseStep1Component } from './create-course/create-course-step-1
 import { CreateCourseStep2Component } from './create-course/create-course-step-2/create-course-step-2.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { HomeComponent } from './home/home.component';
+import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { HomeComponent } from './home/home.component';
     CoursesCardListComponent,
     CreateCourseStep1Component,
     CreateCourseStep2Component,
+    CourseDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { HomeComponent } from './home/home.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCommonModule
+    MatCommonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
