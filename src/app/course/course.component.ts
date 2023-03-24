@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, finalize, tap } from 'rxjs/operators';
 import { Course } from '../model/course';
 import { Lesson } from '../model/lesson';
 import { CoursesService } from '../services/courses.service';
@@ -17,6 +17,8 @@ export class CourseComponent implements OnInit {
 
   lessons: Lesson[] = [];
 
+  loading: boolean = false;
+
   displayedColumns: string[] = [
     "seqNo",
     "description",
@@ -29,11 +31,11 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.course = this.route.snapshot.data["course"];
     this.loadLessonPage();
   }
 
   private loadLessonPage() {
+    this.loading = true;
     this.coursesService.findLessons(this.course.id, "asc", 0, 3)
       .pipe(
         tap(lessons => this.lessons = lessons),
@@ -41,7 +43,8 @@ export class CourseComponent implements OnInit {
           console.log("Error loading lessons", err);
           alert("Error loading lessons");
           return throwError(() => new Error(err));
-        })
+        }),
+        finalize(() => this.loading = false)
       )
       .subscribe();
   }
