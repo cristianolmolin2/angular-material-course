@@ -1,10 +1,16 @@
-import { NestedTreeControl } from '@angular/cdk/tree';
+import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource } from '@angular/material/tree';
 
 interface CourseNode {
   name: string,
   children?: CourseNode[]
+}
+
+interface CourseFlatNode {
+  name: string;
+  expandable: boolean;
+  level: number;
 }
 
 const TREE_DATA: CourseNode[] = [
@@ -54,8 +60,29 @@ export class TreeDemoComponent implements OnInit {
 
   nestedTreeControl = new NestedTreeControl<CourseNode>(node => node.children);
 
+  flatTreeControl = new FlatTreeControl<CourseFlatNode>(
+    node => node.level,
+    node => node.expandable
+  );
+
+  treeFlattener = new MatTreeFlattener(
+    (node: CourseNode, level: number): CourseFlatNode => {
+      return {
+        name: node.name,
+        expandable: node.children !== undefined && node.children.length > 0,
+        level
+      }
+    },
+    node => node.level,
+    node => node.expandable,
+    node => node.children
+  );
+
+  flatDataSource = new MatTreeFlatDataSource(this.flatTreeControl, this.treeFlattener);
+
   ngOnInit() {
     this.nestedDataSource.data = TREE_DATA;
+    this.flatDataSource.data = TREE_DATA;
   }
 
   hasNestedChild(index: number, node: CourseNode) {
@@ -64,6 +91,10 @@ export class TreeDemoComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  hasFlatChild(index: number, node: CourseFlatNode) {
+    return node.expandable;
   }
 
 }
