@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -38,6 +39,7 @@ import { CreateCourseStep2Component } from './create-course/create-course-step-2
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { HomeComponent } from './home/home.component';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { CourseDialogComponent } from './course-dialog/course-dialog.component';
     CreateCourseStep1Component,
     CreateCourseStep2Component,
     CourseDialogComponent,
+    DragDropComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { CourseDialogComponent } from './course-dialog/course-dialog.component';
     MatPaginatorModule,
     MatSortModule,
     MatCommonModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
