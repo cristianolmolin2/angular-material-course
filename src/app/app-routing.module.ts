@@ -8,6 +8,7 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesService } from './services/courses.service';
 import { TreeDemoComponent } from './tree-demo/tree-demo.component';
+import { VirtualScrollingComponent } from './virtual-scrolling/virtual-scrolling.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "tree-example",
     component: TreeDemoComponent
+  },
+  {
+    path: "virtual-scrolling-example",
+    component: VirtualScrollingComponent
   },
   {
     path: "courses/:id",

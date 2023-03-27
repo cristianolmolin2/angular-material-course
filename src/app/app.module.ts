@@ -44,6 +44,7 @@ import { HomeComponent } from './home/home.component';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { TreeDemoComponent } from './tree-demo/tree-demo.component';
+import { VirtualScrollingComponent } from './virtual-scrolling/virtual-scrolling.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TreeDemoComponent } from './tree-demo/tree-demo.component';
     CourseDialogComponent,
     DragDropComponent,
     TreeDemoComponent,
+    VirtualScrollingComponent,
   ],
   imports: [
     BrowserModule,
