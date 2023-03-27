@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -42,6 +43,7 @@ import { CreateCourseComponent } from './create-course/create-course.component';
 import { HomeComponent } from './home/home.component';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
+import { TreeDemoComponent } from './tree-demo/tree-demo.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
     CreateCourseStep2Component,
     CourseDialogComponent,
     DragDropComponent,
+    TreeDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,8 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
     MatDialogModule,
     DragDropModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

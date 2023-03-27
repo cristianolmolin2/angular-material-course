@@ -7,6 +7,7 @@ import { CreateCourseComponent } from './create-course/create-course.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesService } from './services/courses.service';
+import { TreeDemoComponent } from './tree-demo/tree-demo.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: "drag-drop-example",
     component: DragDropComponent
+  },
+  {
+    path: "tree-example",
+    component: TreeDemoComponent
   },
   {
     path: "courses/:id",
