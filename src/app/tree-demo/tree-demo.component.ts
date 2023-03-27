@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { Component, OnInit } from '@angular/core';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 interface CourseNode {
   name: string,
@@ -46,6 +48,22 @@ const TREE_DATA: CourseNode[] = [
   templateUrl: './tree-demo.component.html',
   styleUrls: ['./tree-demo.component.scss']
 })
-export class TreeDemoComponent {
+export class TreeDemoComponent implements OnInit {
+
+  nestedDataSource = new MatTreeNestedDataSource<CourseNode>();
+
+  nestedTreeControl = new NestedTreeControl<CourseNode>(node => node.children);
+
+  ngOnInit() {
+    this.nestedDataSource.data = TREE_DATA;
+  }
+
+  hasNestedChild(index: number, node: CourseNode) {
+    if (node?.children) {
+      return node?.children?.length > 0;
+    } else {
+      return false;
+    }
+  }
 
 }
