@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class VirtualScrollingComponent {
 
-  items = Array.from({ length: 100 }).map((value, i) => `Item #${i}`);
+  items = Array.from({ length: 100000 }).map((value, i) => `Item #${i}`);
 
 }

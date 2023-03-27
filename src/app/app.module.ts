@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -94,7 +95,8 @@ import { VirtualScrollingComponent } from './virtual-scrolling/virtual-scrolling
     DragDropModule,
     MatGridListModule,
     LayoutModule,
-    MatTreeModule
+    MatTreeModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
