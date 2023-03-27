@@ -24,7 +24,15 @@ const TREE_DATA: CourseNode[] = [
     name: 'buzz',
     children: [
       {
-        name: 'buzz1'
+        name: 'buzz1',
+        children: [
+          {
+            name: 'fizz1'
+          },
+          {
+            name: 'fizz2'
+          }
+        ]
       },
       {
         name: 'buzz2'
